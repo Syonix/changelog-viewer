@@ -1,0 +1,19 @@
+{
+    "name": "syonix/changelog-viewer",
+    "description": "This package offers a nice modal display for changelogs",
+    "type": "library",
+    "require": {
+        "jenssegers/date": "^3.1",
+        "cebe/markdown": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Burri",
+            "email": "michael.burri@syonix.ch"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Syonix\\Util\\ChangelogViewer\\": "lib/" }
+    }
+}
