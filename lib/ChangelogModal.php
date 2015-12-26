@@ -6,8 +6,14 @@ use cebe\markdown\Markdown;
 use Jenssegers\Date\Date;
 
 class ChangelogModal {
-    public static function generate($filepath, $locale = 'en') {
+    public static function generate($filepath, $locale = 'en', $styles = false, $scripts = false) {
         Date::setLocale($locale);
+        if($styles) {
+            self::generateStyles();
+        }
+        if($scripts) {
+            self::generateScripts();
+        }
         echo '<div id="changemodal"><h1>Changelog</h1><div class="changelog">';
         $regex = array(
             'version' => '/^## \[(v.+)\]\((.+)\) - ([\d-]+)/',
@@ -68,5 +74,17 @@ class ChangelogModal {
             }
         }
         return $label;
+    }
+
+    public static function generateStyles()
+    {
+        echo '<style>'.file_get_contents(__DIR__.'/../res/screen.css').'</style>';
+    }
+
+    public static function generateScripts()
+    {
+        echo '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
+        echo '<script src="../res/bliss.js"></script>';
+        echo '<script>'.file_get_contents(__DIR__.'/../res/scripts.js').'</script>';
     }
 }

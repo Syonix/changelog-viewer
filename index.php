@@ -9,9 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Changelog</title>
         <link href="res/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <link href="css/screen.css" rel="stylesheet">
+        <style>
+            body {
+                background: #2b3d50;
+                font-size: 1em;
+            }
+        </style>
     </head>
     <body>
-        <?php \Syonix\Util\ChangelogViewer\ChangelogModal::generate(__DIR__.'/changelogs/CHANGELOG.md', 'de'); ?>
+        <?php \Syonix\Util\ChangelogViewer\ChangelogModal::generate(__DIR__.'/changelogs/CHANGELOG.md', 'de', true, true); ?>
     </body>
 </html>
