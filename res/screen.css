@@ -1,8 +1,20 @@
+body {
+  font-size: 1em; }
+
+#changemodal-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(43, 61, 80, 0.75); }
+
 #changemodal {
   width: 700px;
-  height: 100%;
+  position: relative;
   margin: 100px auto 0;
   padding: 10px 35px 35px;
+  opacity: 1;
   color: #777;
   background: #ebf0f1;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -11,7 +23,19 @@
   line-height: 1.6;
   border-radius: 6px;
   -webkit-box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.2); }
+  box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.2);
+  -webkit-animation-duration: 300ms;
+  animation-duration: 300ms; }
+  #changemodal #close-button {
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #aaa;
+    cursor: pointer; }
+    #changemodal #close-button:hover {
+      color: #777; }
   #changemodal h1, #changemodal h2, #changemodal h3 {
     text-align: center; }
   #changemodal h1 {
@@ -25,6 +49,7 @@
     margin: 1.2rem 0 0 0; }
   #changemodal h3 {
     font-size: 2rem;
+    font-weight: 100;
     margin: 0 0 1.2rem 0;
     text-transform: uppercase; }
   #changemodal .changelog {

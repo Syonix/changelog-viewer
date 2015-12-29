@@ -6,15 +6,19 @@ use cebe\markdown\Markdown;
 use Jenssegers\Date\Date;
 
 class ChangelogModal {
-    public static function generate($filepath, $locale = 'en', $styles = false, $scripts = false) {
+    public static function generate($filepath, $locale = 'en', $title='Changelog', $styles = true, $closeable = false) {
         Date::setLocale($locale);
+        $hidden = '';
+
         if($styles) {
-            self::generateStyles();
+            self::loadStyles();
         }
-        if($scripts) {
-            self::generateScripts();
+        if($closeable) {
+            $hidden = ' style="display:none;"';
         }
-        echo '<div id="changemodal"><h1>Changelog</h1><div class="changelog">';
+        echo '<div id="changemodal-wrapper"'.$hidden.'><div id="changemodal"'.$hidden.'><h1>'.$title.'</h1>';
+        if($closeable) echo '<i id="close-button" class="fa fa-times"></i>';
+        echo'<div class="changelog">';
         $regex = array(
             'version' => '/^## \[(v.+)\]\((.+)\) - ([\d-]+)/',
             'changes_url' => '/^\[See full Changelog\]\((.+)\)/',
@@ -54,7 +58,18 @@ class ChangelogModal {
         }
         if($labelOpen) echo '</ul>';
         if($versionWrapperOpen) echo '</div>';
-        echo '</div></div>';
+        echo '</div></div></div>';
+        if($closeable) {
+            self::loadScripts();
+        }
+    }
+
+    public static function generateCloseable($filepath, $locale = 'en', $title = 'Changelog') {
+        self::generate($filepath, $locale, $title, true, true, true);
+    }
+
+    public static function generateFixed($filepath, $locale = 'en', $title = 'Changelog') {
+        self::generate($filepath, $locale, $title, true, true, false);
     }
 
     public static function translateLocalizedLabel($label, $locale) {
@@ -76,15 +91,17 @@ class ChangelogModal {
         return $label;
     }
 
-    public static function generateStyles()
+    public static function loadStyles()
     {
+        echo '<link rel="stylesheet" href="https://cdn.syonix.ch/fonts/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all" />';
+        echo '<link rel="stylesheet" href="https://cdn.syonix.ch/css/animate.css/3.2.0/animate.css" type="text/css" media="all" />';
         echo '<style>'.file_get_contents(__DIR__.'/../res/screen.css').'</style>';
     }
 
-    public static function generateScripts()
+    public static function loadScripts()
     {
         echo '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
-        echo '<script src="../res/bliss.js"></script>';
+        echo '<script>'.file_get_contents(__DIR__.'/../res/bliss.js').'</script>';
         echo '<script>'.file_get_contents(__DIR__.'/../res/scripts.js').'</script>';
     }
 }
