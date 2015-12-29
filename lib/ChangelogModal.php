@@ -6,7 +6,7 @@ use cebe\markdown\Markdown;
 use Jenssegers\Date\Date;
 
 class ChangelogModal {
-    public static function generate($filepath, $locale = 'en', $title='Changelog', $styles = true, $closeable = false) {
+    public static function generate($filepath, $locale = 'en', $title = 'Changelog', $styles = true, $closeable = false) {
         Date::setLocale($locale);
         $hidden = '';
 
