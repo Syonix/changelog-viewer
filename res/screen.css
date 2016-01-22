@@ -58,6 +58,10 @@ body {
     font-weight: 100;
     margin: 0 0 1.2rem 0;
     text-transform: uppercase; }
+    #changemodal h3 a {
+      color: #aaa; }
+      #changemodal h3 a:hover {
+        color: black; }
   #changemodal .changelog {
     background: white;
     padding: 1em; }

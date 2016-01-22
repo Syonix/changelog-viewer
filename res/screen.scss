@@ -75,6 +75,13 @@ body {
     font-weight: 100;
     margin: 0 0 1.2rem 0;
     text-transform: uppercase;
+
+    a {
+      color: #aaa;
+      &:hover {
+        color: black;
+      }
+    }
   }
 
   .changelog {

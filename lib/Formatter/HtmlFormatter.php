@@ -71,7 +71,9 @@ class HtmlFormatter {
             foreach ($this->processor->getVersions() as $version) {
                 $date = new Date($version->getReleaseDate()->getTimestamp());
                 echo '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
-                echo '<h3 title="'.'">'.$date->ago().'</h3>';
+                echo '<h3 title="'.'">'.$date->ago();
+                if($this->printDownloadLinks) echo ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';
+                echo '</h3>';
                 echo '<div class="version-wrapper">';
                 foreach($version->getChanges() as $label => $changes) {
                     echo '<ul class="'.$label.'">';
