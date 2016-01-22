@@ -67,19 +67,28 @@ class HtmlFormatter {
         }
         echo'<div class="changelog">';
 
-        foreach ($this->processor->getVersions() as $version) {
-            $date = new Date($version->getReleaseDate()->getTimestamp());
-            echo '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
-            echo '<h3 title="'.'">'.$date->ago().'</h3>';
-            echo '<div class="version-wrapper">';
-            foreach($version->getChanges() as $label => $changes) {
-                echo '<ul class="'.$label.'">';
-                foreach($changes as $change) {
-                    echo '<li data-label="'.ucfirst($this->processor->getTranslator()->translateTo($label)).'">'.$change.'</li>';
+        try {
+            foreach ($this->processor->getVersions() as $version) {
+                $date = new Date($version->getReleaseDate()->getTimestamp());
+                echo '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
+                echo '<h3 title="'.'">'.$date->ago().'</h3>';
+                echo '<div class="version-wrapper">';
+                foreach($version->getChanges() as $label => $changes) {
+                    echo '<ul class="'.$label.'">';
+                    foreach($changes as $change) {
+                        echo '<li data-label="'.ucfirst($this->processor->getTranslator()->translateTo($label)).'">'.$change.'</li>';
+                    }
+                    echo '</ul>';
                 }
-                echo '</ul>';
+                echo '</div>';
             }
-            echo '</div>';
+
+        } catch (\Exception $e) {
+            echo '<div class="alert alert-danger" style="text-align: center" role="alert">'
+                .'<i class="fa fa-lg fa-exclamation-triangle"></i><br>'
+                .'<b>Could not get Changelog!</b><br>'
+                .'Error: <em>'.$e->getMessage().'</em>'
+                .'</div>';
         }
         echo '</div></div>';
         if($this->printFrame) echo '</div>';
