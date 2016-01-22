@@ -2,9 +2,19 @@
 
 namespace Syonix\ChangelogViewer\Factory;
 
-class ViewerFactory {
-    public static function MarkdownHtmlViewer()
-    {
+use Syonix\ChangelogViewer\Formatter\HtmlFormatter;
+use Syonix\ChangelogViewer\Processor\MarkdownProcessor;
+use Syonix\ChangelogViewer\Translator\LabelTranslator;
 
+class ViewerFactory {
+    public static function MarkdownHtmlViewer($path, $locale = null)
+    {
+        if(null !== $locale) {
+            $locale = new LabelTranslator($locale);
+            $processor = new MarkdownProcessor($path,$locale);
+        } else {
+            $processor = new MarkdownProcessor($path);
+        }
+        return new HtmlFormatter($processor);
     }
 }

@@ -1,9 +1,7 @@
 <?php
     require __DIR__ . '/../vendor/autoload.php';
 
-    use Syonix\ChangelogViewer\Translator\LabelTranslator;
-    use Syonix\ChangelogViewer\Formatter\HtmlFormatter;
-    use Syonix\ChangelogViewer\Processor\MarkdownProcessor;
+    use \Syonix\ChangelogViewer\Factory\ViewerFactory;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +14,6 @@
     </head>
     <body style="background: #ececec;">
         <a href="#" onclick="openChangelogModal();" style="width: 200px; text-align: center; display: block; margin: 50px auto 0 auto; font-size: 2rem;">Show Changes</a>
-        <?php
-            (new HtmlFormatter(new MarkdownProcessor(__DIR__ . '/changelogs/CHANGELOG.md',new LabelTranslator('de'))))
-                //->modal(true)
-                //->frame(false)
-                ->build();
-        ?>
+        <?php ViewerFactory::MarkdownHtmlViewer(__DIR__ . '/changelogs/CHANGELOG.md', 'de')->build(); ?>
     </body>
 </html>
