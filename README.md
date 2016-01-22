@@ -1,6 +1,6 @@
 # Changelog Viewer
 
-This package offers a nice modal display for changelogs
+This package offers a nice modal display for change logs. 
 
 ## Usage
 
