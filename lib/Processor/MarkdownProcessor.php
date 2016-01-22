@@ -21,9 +21,9 @@ class MarkdownProcessor implements Processor {
 
     public function __construct($filePath, LabelTranslator $translator = null, $removeIssues = true)
     {
-        if($translator === null) $translator = new LabelTranslator(null);
+        if($translator === null) $translator = new LabelTranslator();
         $this->translator = $translator;
-        if(!is_readable($filePath)) throw new \InvalidArgumentException('File not found.');
+        if(!is_readable($filePath)) throw new \InvalidArgumentException('File "'.$filePath.'" not found.');
         $this->filePath = $filePath;
         $this->translator = $translator;
         $this->removeIssues = $removeIssues;
