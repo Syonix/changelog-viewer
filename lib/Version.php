@@ -59,7 +59,8 @@ class Version {
 
     public function addChange($type, $change) {
         if(!array_key_exists($type, $this->changes)) {
-            throw new \InvalidArgumentException('Invalid change type provided');
+            throw new \InvalidArgumentException('The changelog file contains an unexpected entry type ("'.$type.'"). '
+                .'Did you forget to specify the correct locale for your file?');
         }
         $this->changes[$type]->add($change);
     }
