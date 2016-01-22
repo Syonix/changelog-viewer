@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "jenssegers/date": "^3.1",
-        "cebe/markdown": "^1.1"
+        "cebe/markdown": "^1.1",
+        "doctrine/collections": "^1.3"
     },
     "license": "MIT",
     "authors": [
@@ -14,6 +15,6 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Syonix\\Util\\ChangelogViewer\\": "lib/" }
+        "psr-4": { "Syonix\\ChangelogViewer\\": "lib/" }
     }
 }

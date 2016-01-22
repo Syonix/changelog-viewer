@@ -1,12 +1,11 @@
 <?php
 
-namespace Syonix\Util\ChangelogViewer;
+namespace Syonix\ChangelogViewer;
 
 use cebe\markdown\Markdown;
 use Jenssegers\Date\Date;
-use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
-class ChangelogModal {
+class Viewer {
     private $filePath;
     private $title = 'Changelog';
     private $locale = 'en';
@@ -24,7 +23,7 @@ class ChangelogModal {
     private $labels = [];
 
     public function __construct($filepath) {
-        if(!is_readable($filepath)) throw new NotFoundResourceException();
+        if(!is_readable($filepath)) throw new \InvalidArgumentException('File not found.');
         $this->readLocales();
         $this->filePath = $filepath;
         return $this;
@@ -88,10 +87,6 @@ class ChangelogModal {
         }
         $this->regex = $val;
         return $this;
-    }
-
-    private function readFile($path) {
-        
     }
 
     private function readLocales() {
