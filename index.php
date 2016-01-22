@@ -12,6 +12,12 @@
     </head>
     <body style="background: #ececec;">
         <a href="#" onclick="openChangelogModal();" style="width: 200px; text-align: center; display: block; margin: 50px auto 0 auto; font-size: 2rem;">Show Changes</a>
-        <?php \Syonix\Util\ChangelogViewer\ChangelogModal::generateCloseable(__DIR__.'/changelogs/CHANGELOG.md', 'de'); ?>
+        <?php
+            (new \Syonix\Util\ChangelogViewer\ChangelogModal(__DIR__.'/changelogs/CHANGELOG.md'))
+                //->modal()
+                //->frame(false)
+                ->locale('de')
+                ->build();
+        ?>
     </body>
 </html>

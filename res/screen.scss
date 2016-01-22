@@ -12,34 +12,44 @@ body {
 }
 
 #changemodal {
-  width: 700px;
-  position: relative;
-  margin: 100px auto 0;
-  padding: 10px 35px 35px;
-  opacity: 1;
-  color: #777;
-  background: #ebf0f1;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 1.8rem;
   line-height: 1.6;
-  border-radius: 6px;
-  -webkit-box-shadow: 2px 2px 12px 0 rgba(0,0,0,.2);
-  box-shadow: 2px 2px 12px 0 rgba(0,0,0,.2);
+  color: #777;
   -webkit-animation-duration: 300ms;
   animation-duration: 300ms;
 
-  #close-button {
-    font-size: 2rem;
-    display: block;
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    color: #aaa;
-    cursor: pointer;
+  #changemodal-frame {
+    width: 700px;
+    position: relative;
+    margin: 100px auto 0;
+    padding: 10px 35px 35px;
+    opacity: 1;
+    background: #ebf0f1;
+    border-radius: 6px;
+    -webkit-box-shadow: 2px 2px 12px 0 rgba(0,0,0,.2);
+    box-shadow: 2px 2px 12px 0 rgba(0,0,0,.2);
 
-    &:hover {
-      color: #777;
+    .changelog {
+      overflow: auto;
+      max-height: 500px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+
+    #close-button {
+      font-size: 2rem;
+      display: block;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      color: #aaa;
+      cursor: pointer;
+
+      &:hover {
+        color: #777;
+      }
     }
   }
 
@@ -68,10 +78,6 @@ body {
   }
 
   .changelog {
-    max-height: 500px;
-    overflow: auto;
-    border: 1px solid #ddd;
-    border-radius: 3px;
     background: white;
     padding: 1em;
 
@@ -79,13 +85,13 @@ body {
       list-style: none;
       padding: 0;
 
-      &.blue li:before {
+      &.new li:before {
         background-color: #268bd2;
       }
-      &.orange li:before {
+      &.improved li:before {
         background-color: #f49d13;
       }
-      &.red li:before {
+      &.fixed li:before {
         background-color: #e74c3c;
       }
 
