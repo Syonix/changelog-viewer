@@ -70,6 +70,9 @@ class MarkdownProcessor implements Processor {
                 $currentVersion->addChange($currentLabel, $parser->parseParagraph($change));
             }
         }
+        if(null !== $currentVersion) {
+            $this->versions->add($currentVersion);
+        }
 
         return $this->versions;
     }
