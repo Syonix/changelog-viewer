@@ -16,7 +16,7 @@ ViewerFactory::MarkdownHtmlViewer(__DIR__ . '/../CHANGELOG.md')->build();
 ## Processors
 Processors are the component of the library that reads the changelog file. Currently implemented is the `MarkdownProcessor` but you could add any of your own, as long as it implements the `Processor\Processor` Interface.
 
-### `MarkdownProcessor`
+### MarkdownProcessor
 The `MarkdownProcessor` takes the path to a markdown file and returns an `ArrayCollection` containing instances of `Version`.
 The Markdown file must follow this scheme:
 ```md
@@ -56,7 +56,7 @@ $processor = new MarkdownProcessor($path)
 ## Formatters
 Formatters are used to display the change log. Currently there is only the `HtmlFormatter` which outputs the change log to HTML, but you could implement anything else.
 
-### `HtmlFormatter`
+### HtmlFormatter
 The `HtmlFormatter` prints nice HTML. You have several options for that:
 ```php
 (new HtmlFormatter($processor))
