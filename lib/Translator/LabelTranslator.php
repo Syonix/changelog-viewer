@@ -4,7 +4,7 @@ namespace Syonix\ChangelogViewer\Translator;
 
 class LabelTranslator {
     private $locale;
-    private $labels;
+    private $labels = [];
 
     public function __construct($locale = 'en')
     {
