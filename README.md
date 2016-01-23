@@ -6,6 +6,14 @@ Screenshot here...
 
 Thanks a lot to [Grav CMS](http://getgrav.org) who let me use their design for the changelog modal. I use Grav myself and already replaced several Wordpress pages with it. Go check it out!
 
+## Installation
+### Using [Composer](https://getcomposer.org)
+Call `composer require syonix/changelog-viewer`.
+
+### Manual installation
+Download the project files and upload them to your web server. 
+Include the class autoloader `/vendor/autoload.php` or configure your own autoloader.
+
 ## Usage
 To render a display, just call a factory function like this:
 ```php
