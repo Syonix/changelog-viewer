@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Syonix\ChangelogViewer\Translator\LabelTranslator;
 use Syonix\ChangelogViewer\Version;
 
-class MarkdownProcessorInterface implements ProcessorInterface {
+class MarkdownProcessor implements ProcessorInterface {
     private $filePath;
     private $translator;
     private $removeIssues;
