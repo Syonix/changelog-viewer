@@ -88,7 +88,7 @@ Method | Default | Description
 `frame(bool)` | `true` | If set to `false`, no frame will be printed.
 `styles(bool)` | `true` | Print styles with the modal. Set to `false` if you want to include your own css.
 `scripts(bool)` | `true` if `modal(true)` <br> `false` otherwise | Print the scripts used to open and close the modal. Set to `false` if you want to include your own js. <br>**Note:** Calling `modal(true)` also sets `scripts` to `true`, so if you want to add your own scripts for the modal, make sure you call `scripts(false)` after `modal()`.
-`downloadLinks(bool)` | `false` | Display a download link for each version. Looks like this:<br> ![Build Status](https://github.com/Syonix/monolog-viewer/raw/master/demo/download_button.png)
+`downloadLinks(bool)` | `false` | Display a download link for each version. Looks like this:<br> ![Build Status](https://github.com/Syonix/changelog-viewer/raw/master/demo/download_button.png)
 
 `build()` | | Compiles and returns the change log HTML code according to the options above.
 `output()` | | Calls `build()` and echoes the HTML code. <br>Same as `echo (new HtmlFormatter($processor))->build();`
