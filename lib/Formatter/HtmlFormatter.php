@@ -47,69 +47,77 @@ class HtmlFormatter {
         return $this;
     }
 
-    public function downloadLinks($val) {
+    public function downloadLinks($val = true) {
         $this->printDownloadLinks = boolval($val);
         return $this;
     }
 
     public function build() {
+        $html = "";
         Date::setLocale($this->locale);
 
         if($this->printStyles) {
-            $this->printStyles();
+            $html .= $this->getStylesHtml();
         }
         $hidden = $this->isModal ? ' style="display:none;"' : '';
         if($this->printFrame) {
-            echo '<div id="changemodal-wrapper"'.$hidden.'><div id="changemodal"'.$hidden.'><div id="changemodal-frame"><h1>'.$this->title.'</h1>';
-            if($this->isModal) echo '<i id="close-button" class="fa fa-times"></i>';
+            $html .= '<div id="changemodal-wrapper"'.$hidden.'><div id="changemodal"'.$hidden.'><div id="changemodal-frame"><h1>'.$this->title.'</h1>';
+            if($this->isModal) $html .= '<i id="close-button" class="fa fa-times"></i>';
         } else {
-            echo '<div id="changemodal">';
+            $html .= '<div id="changemodal">';
         }
-        echo'<div class="changelog">';
+        $html .= '<div class="changelog">';
 
         try {
             foreach ($this->processor->getVersions() as $version) {
                 $date = new Date($version->getReleaseDate()->getTimestamp());
-                echo '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
-                echo '<h3 title="'.'">'.$date->ago();
-                if($this->printDownloadLinks) echo ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';
-                echo '</h3>';
-                echo '<div class="version-wrapper">';
+                $html .= '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
+                $html .= '<h3 title="'.'">'.$date->ago();
+                if($this->printDownloadLinks) $html .= ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';
+                $html .= '</h3>';
+                $html .= '<div class="version-wrapper">';
                 foreach($version->getChanges() as $label => $changes) {
-                    echo '<ul class="'.$label.'">';
+                    $html .= '<ul class="'.$label.'">';
                     foreach($changes as $change) {
-                        echo '<li data-label="'.ucfirst($this->processor->getTranslator()->translateTo($label)).'">'.$change.'</li>';
+                        $html .= '<li data-label="'.ucfirst($this->processor->getTranslator()->translateTo($label)).'">'.$change.'</li>';
                     }
-                    echo '</ul>';
+                    $html .= '</ul>';
                 }
-                echo '</div>';
+                $html .= '</div>';
             }
 
         } catch (\Exception $e) {
-            echo '<div class="alert alert-danger" style="text-align: center" role="alert">'
+            $html .= '<div class="alert alert-danger" style="text-align: center" role="alert">'
                 .'<i class="fa fa-lg fa-exclamation-triangle"></i><br>'
                 .'<b>Could not get Changelog!</b><br>'
                 .'Error: <em>'.$e->getMessage().'</em>'
                 .'</div>';
         }
-        echo '</div></div>';
-        if($this->printFrame) echo '</div>';
+        $html .= '</div></div>';
+        if($this->printFrame) $html .= '</div>';
         if($this->printScripts) {
-            $this->printScripts();
+            $html .= $this->getScriptsHtml();
         }
+        return $html;
     }
 
-    private function printStyles()
-    {
-        echo '<link rel="stylesheet" href="https://cdn.syonix.ch/fonts/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all" />';
-        echo '<link rel="stylesheet" href="https://cdn.syonix.ch/css/animate.css/3.2.0/animate.css" type="text/css" media="all" />';
-        echo '<style>'.file_get_contents(__DIR__.'/../../res/screen.css').'</style>';
+    public function output() {
+        echo $this->build();
     }
 
-    private function printScripts()
+    private function getStylesHtml()
     {
-        echo '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
-        echo '<script>'.file_get_contents(__DIR__.'/../../res/bliss.js').'</script>';
-        echo '<script>'.file_get_contents(__DIR__.'/../../res/scripts.js').'</script>';
+        $html = '<link rel="stylesheet" href="https://cdn.syonix.ch/fonts/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all" />';
+        $html .= '<link rel="stylesheet" href="https://cdn.syonix.ch/css/animate.css/3.2.0/animate.css" type="text/css" media="all" />';
+        $html .= '<style>'.file_get_contents(__DIR__.'/../../res/screen.css').'</style>';
+        return $html;
+    }
+
+    private function getScriptsHtml()
+    {
+        $html = '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
+        $html .= '<script>'.file_get_contents(__DIR__.'/../../res/bliss.js').'</script>';
+        $html .= '<script>'.file_get_contents(__DIR__.'/../../res/scripts.js').'</script>';
+        return $html;
     }
 }
