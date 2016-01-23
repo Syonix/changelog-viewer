@@ -1,4 +1,8 @@
 # Changelog Viewer
+[![Build Status](https://travis-ci.org/Syonix/changelog-viewer.svg?branch=master)](https://travis-ci.org/Syonix/changelog-viewer)
+[![Total Downloads](https://poser.pugx.org/syonix/changelog-viewer/downloads.png)](https://packagist.org/packages/syonix/changelog-viewer)
+[![Latest Stable Version](https://poser.pugx.org/syonix/changelog-viewer/v/stable.png)](https://packagist.org/packages/syonix/changelog-viewer)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/f0f52ed2-925c-4418-ba88-89c281bf4d44/mini.png)](https://insight.sensiolabs.com/projects/f0f52ed2-925c-4418-ba88-89c281bf4d44)
 
 This package offers a nice way to display change logs.
 
