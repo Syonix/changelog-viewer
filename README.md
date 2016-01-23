@@ -22,7 +22,7 @@ Include the class autoloader `/vendor/autoload.php` or configure your own autolo
 To render a display, just call a factory function like this:
 ```php
 use \Syonix\ChangelogViewer\Factory\ViewerFactory;
-ViewerFactory::MarkdownHtmlViewer(__DIR__ . '/../CHANGELOG.md')->build();
+ViewerFactory::createMarkdownHtmlViewer(__DIR__ . '/../CHANGELOG.md')->build();
 ```
 
 ## Processors

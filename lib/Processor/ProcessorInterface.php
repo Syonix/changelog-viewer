@@ -5,7 +5,7 @@ namespace Syonix\ChangelogViewer\Processor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Syonix\ChangelogViewer\Translator\LabelTranslator;
 
-interface Processor {
+interface ProcessorInterface {
     /**
      * @return ArrayCollection
      */

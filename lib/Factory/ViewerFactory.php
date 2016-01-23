@@ -3,17 +3,17 @@
 namespace Syonix\ChangelogViewer\Factory;
 
 use Syonix\ChangelogViewer\Formatter\HtmlFormatter;
-use Syonix\ChangelogViewer\Processor\MarkdownProcessor;
+use Syonix\ChangelogViewer\Processor\MarkdownProcessorInterface;
 use Syonix\ChangelogViewer\Translator\LabelTranslator;
 
 class ViewerFactory {
-    public static function MarkdownHtmlViewer($path, $locale = null)
+    public static function createMarkdownHtmlViewer($path, $locale = null)
     {
         if(null !== $locale) {
             $locale = new LabelTranslator($locale);
-            $processor = new MarkdownProcessor($path,$locale);
+            $processor = new MarkdownProcessorInterface($path,$locale);
         } else {
-            $processor = new MarkdownProcessor($path);
+            $processor = new MarkdownProcessorInterface($path);
         }
         return new HtmlFormatter($processor);
     }

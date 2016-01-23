@@ -13,6 +13,6 @@
     </head>
     <body style="background: #ececec;">
         <a href="#" onclick="openChangelogModal();" style="width: 200px; text-align: center; display: block; margin: 50px auto 0 auto; font-size: 2rem;">Show Changes</a>
-        <?php ViewerFactory::MarkdownHtmlViewer(__DIR__ . '/../CHANGELOG.md')->output(); ?>
+        <?php ViewerFactory::createMarkdownHtmlViewer(__DIR__ . '/../CHANGELOG.md')->output(); ?>
     </body>
 </html>

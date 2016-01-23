@@ -3,7 +3,7 @@
 namespace Syonix\ChangelogViewer\Formatter;
 
 use Jenssegers\Date\Date;
-use Syonix\ChangelogViewer\Processor\Processor;
+use Syonix\ChangelogViewer\Processor\ProcessorInterface;
 
 class HtmlFormatter {
     private $processor;
@@ -15,7 +15,7 @@ class HtmlFormatter {
     private $printScripts = true;
     private $printDownloadLinks = false;
 
-    public function __construct(Processor $processor) {
+    public function __construct(ProcessorInterface $processor) {
         $this->processor = $processor;
         $this->locale = $processor->getTranslator()->getLocale();
         return $this;
@@ -116,7 +116,7 @@ class HtmlFormatter {
     private function getScriptsHtml()
     {
         $html = '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
-        $html .= '<script>'.file_get_contents(__DIR__.'/../../res/bliss.js').'</script>';
+        $html .= '<script>'.file_get_contents(__DIR__ . '/../../res/bliss.min.js').'</script>';
         $html .= '<script>'.file_get_contents(__DIR__.'/../../res/scripts.js').'</script>';
         return $html;
     }

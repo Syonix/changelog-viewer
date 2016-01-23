@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Syonix\ChangelogViewer\Translator\LabelTranslator;
 use Syonix\ChangelogViewer\Version;
 
-class MarkdownProcessor implements Processor {
+class MarkdownProcessorInterface implements ProcessorInterface {
     private $filePath;
     private $translator;
     private $removeIssues;
@@ -62,7 +62,7 @@ class MarkdownProcessor implements Processor {
                 $currentVersion->setUrl($matches[2]);
                 $currentVersion->setReleaseDate(new \DateTime($matches[3]));
             } else if (preg_match($this->regex['changes_url'], $line, $matches)) {
-                $fullChangelogUrl = $matches[0]; // Currently not used
+                //$fullChangelogUrl = $matches[0]; // Currently not used
             } else if (preg_match($this->regex['label'], $line, $matches)) {
                 $currentLabel = $this->translator->translateFrom($matches[1]);
             } else if (preg_match($this->regex['change'], $line, $matches)) {
