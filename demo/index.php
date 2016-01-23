@@ -1,6 +1,5 @@
 <?php
     require __DIR__ . '/../vendor/autoload.php';
-
     use \Syonix\ChangelogViewer\Factory\ViewerFactory;
 ?>
 <!DOCTYPE html>
