@@ -6,10 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [See full Changelog](#)
 
 ### New
-- New feature
+- Awesome new feature
 
 ### Improved
-- Made an awesome feature even better
 - Look, even `code` and *formatting* is **possible**.
 
 ### Deprecated
