@@ -73,9 +73,9 @@ body {
       padding: 0; }
       #changemodal .changelog ul li:before {
         background-color: #aaa; }
-      #changemodal .changelog ul.new li:before {
+      #changemodal .changelog ul.added li:before, #changemodal .changelog ul.new li:before {
         background-color: #673AB7; }
-      #changemodal .changelog ul.improved li:before {
+      #changemodal .changelog ul.changed li:before, #changemodal .changelog ul.improved li:before {
         background-color: #2196F3; }
       #changemodal .changelog ul.deprecated li:before {
         background-color: #FFC107; }

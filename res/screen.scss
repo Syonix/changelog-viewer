@@ -100,9 +100,11 @@ body {
         background-color: #aaa;
       }
 
+      &.added li:before,
       &.new li:before {
         background-color: #673AB7;
       }
+      &.changed li:before,
       &.improved li:before {
         background-color: #2196F3;
       }

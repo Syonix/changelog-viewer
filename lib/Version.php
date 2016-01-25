@@ -15,7 +15,9 @@ class Version {
     public function __construct()
     {
         $this->changes = array(
+            'added' => new ArrayCollection(),
             'new' => new ArrayCollection(),
+            'changed' => new ArrayCollection(),
             'improved' => new ArrayCollection(),
             'fixed' => new ArrayCollection(),
             'security' => new ArrayCollection(),
