@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Awesome new feature
 
 ### Improved
-- Look, even `code` and *formatting* is **possible**.
+- Look, even `code` and *formatting* is **possible**. And [hyperlinks](http://syonix.ch)
 
 ### Deprecated
 - Deprecated feature to be removed in the next minor version.
