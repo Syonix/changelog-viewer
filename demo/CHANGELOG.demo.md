@@ -12,8 +12,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Made an awesome feature even better
 - Look, even `code` and *formatting* is **possible**.
 
+### Deprecated
+- Deprecated feature to be removed in the next minor version.
+
+### Removed
+- Deprecated feature from last version now removed.
+
 ### Fixed
 - There was a bug. Now it is no more.
+
+### Security
 - Fixed something really terrible that caused us to yank the last release
 
 ## [v1.0.0](#) - 2016-01-23 [YANKED]

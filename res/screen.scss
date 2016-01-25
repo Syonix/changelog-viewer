@@ -96,14 +96,27 @@ body {
       list-style: none;
       padding: 0;
 
+      li:before {
+        background-color: #aaa;
+      }
+
       &.new li:before {
-        background-color: #268bd2;
+        background-color: #673AB7;
       }
       &.improved li:before {
-        background-color: #f49d13;
+        background-color: #2196F3;
+      }
+      &.deprecated li:before {
+        background-color: #FFC107;
+      }
+      &.removed li:before {
+        background-color: #FF9800;
       }
       &.fixed li:before {
-        background-color: #e74c3c;
+        background-color: #4CAF50;
+      }
+      &.security li:before {
+        background-color: #f44336;
       }
 
       li {
