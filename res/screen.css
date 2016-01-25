@@ -53,6 +53,9 @@ body {
     font-size: 4rem;
     font-weight: bold;
     margin: 1.2rem 0 0 0; }
+    #changemodal h2.yanked {
+      text-decoration: line-through;
+      color: #e74c3c; }
   #changemodal h3 {
     font-size: 2rem;
     font-weight: 100;
@@ -94,6 +97,8 @@ body {
       margin: 0 0 3rem 0; }
       #changemodal .changelog div.version-wrapper:last-child {
         margin: 0; }
+    #changemodal .changelog h2 ~ div.version-wrapper {
+      margin-top: 1.2rem; }
     #changemodal .changelog code {
       color: #5e5e5e;
       background: #fefaed;

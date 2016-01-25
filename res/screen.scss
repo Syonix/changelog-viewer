@@ -68,6 +68,10 @@ body {
     font-size: 4rem;
     font-weight: bold;
     margin: 1.2rem 0 0 0;
+    &.yanked {
+      text-decoration: line-through;
+      color: #e74c3c;
+    }
   }
 
   h3 {
@@ -129,6 +133,9 @@ body {
       &:last-child {
         margin: 0;
       }
+    }
+    h2 ~ div.version-wrapper {
+      margin-top: 1.2rem;
     }
 
     code {

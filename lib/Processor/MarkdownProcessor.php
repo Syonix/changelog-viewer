@@ -12,12 +12,7 @@ class MarkdownProcessor implements ProcessorInterface {
     private $translator;
     private $removeIssues;
     private $versions;
-    private $regex = array(
-        'version' => '/^## \[(v.+)\]\((.+)\) - ([\d-]+)/',
-        'changes_url' => '/^\[See full Changelog\]\((.+)\)/',
-        'label' => '/^### (.+)/',
-        'change' => '/^- (.+)/',
-    );
+    private $regex;
 
     public function __construct($filePath, LabelTranslator $translator = null, $removeIssues = true)
     {
@@ -28,6 +23,12 @@ class MarkdownProcessor implements ProcessorInterface {
         $this->translator = $translator;
         $this->removeIssues = $removeIssues;
         $this->versions = new ArrayCollection();
+        $this->regex = array(
+            'version' => '/^## \[([^\]]+)\](?:\((.+)\))?(?: - ([\d-]+))? ?(\[YANKED\])?/',
+            'changes_url' => '/^\['.$translator->translateTo('See full Changelog').'\]\((.+)\)/',
+            'label' => '/^### (.+)/',
+            'change' => '/^- (.+)/',
+        );
     }
 
     public function setRegex($regex) {
@@ -59,12 +60,15 @@ class MarkdownProcessor implements ProcessorInterface {
                 }
                 $currentVersion = new Version();
                 $currentVersion->setVersion($matches[1]);
-                $currentVersion->setUrl($matches[2]);
-                $currentVersion->setReleaseDate(new \DateTime($matches[3]));
+                if($currentVersion->isReleased()) {
+                    $currentVersion->setUrl($matches[2]);
+                    $currentVersion->setReleaseDate(new \DateTime($matches[3]));
+                }
+                $currentVersion->setYanked(in_array('[YANKED]', $matches));
             } else if (preg_match($this->regex['changes_url'], $line, $matches)) {
                 //$fullChangelogUrl = $matches[0]; // Currently not used
             } else if (preg_match($this->regex['label'], $line, $matches)) {
-                $currentLabel = $this->translator->translateFrom($matches[1]);
+                $currentLabel = $this->translator->translateFrom(strtolower($matches[1]));
             } else if (preg_match($this->regex['change'], $line, $matches)) {
                 $change = $this->removeIssues ? preg_replace('/#\d+/', '', $matches[1]) : $matches[1];
                 $currentVersion->addChange($currentLabel, $parser->parseParagraph($change));

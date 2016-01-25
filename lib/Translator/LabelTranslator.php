@@ -23,7 +23,6 @@ class LabelTranslator {
     }
 
     public function translateFrom($label) {
-        $label = strtolower($label);
         if('en' !== $this->locale && array_key_exists($label, $this->labels)) {
             return $this->labels[$label];
         }
@@ -31,7 +30,6 @@ class LabelTranslator {
     }
 
     public function translateTo($label) {
-        $label = strtolower($label);
         $labelsReverse = array_flip($this->labels);
 
         if('en' !== $this->locale && array_key_exists($label, $labelsReverse)) {

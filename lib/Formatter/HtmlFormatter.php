@@ -53,6 +53,7 @@ class HtmlFormatter {
     }
 
     public function build() {
+        $translator = $this->processor->getTranslator();
         $html = "";
         Date::setLocale($this->locale);
 
@@ -70,16 +71,20 @@ class HtmlFormatter {
 
         try {
             foreach ($this->processor->getVersions() as $version) {
-                $date = new Date($version->getReleaseDate()->getTimestamp());
-                $html .= '<h2 id="'.$version->getVersion().'">'.$version->getVersion().'</h2>';
-                $html .= '<h3 title="'.'">'.$date->ago();
-                if($this->printDownloadLinks) $html .= ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';
-                $html .= '</h3>';
+                $html .= '<h2 id="'.$version->getVersion().'"';
+                if($version->isYanked()) $html .= ' class="yanked" title="'.$translator->translateTo('This release has been yanked.').'"';
+                $html .= '>'.$version->getVersion().'</h2>';
+                if($version->isReleased()) {
+                    $date = new Date($version->getReleaseDate()->getTimestamp());
+                    $html .= '<h3 title="'.'">'.$date->ago();
+                    if($this->printDownloadLinks && !$version->isYanked()) $html .= ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';
+                    $html .= '</h3>';
+                }
                 $html .= '<div class="version-wrapper">';
                 foreach($version->getChanges() as $label => $changes) {
                     $html .= '<ul class="'.$label.'">';
                     foreach($changes as $change) {
-                        $html .= '<li data-label="'.ucfirst($this->processor->getTranslator()->translateTo($label)).'">'.$change.'</li>';
+                        $html .= '<li data-label="'.ucfirst($translator->translateTo($label)).'">'.$change.'</li>';
                     }
                     $html .= '</ul>';
                 }

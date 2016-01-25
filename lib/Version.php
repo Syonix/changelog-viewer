@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class Version {
     private $version;
+    private $unreleased;
+    private $yanked;
     private $releaseDate;
     private $url;
     private $changes;
@@ -26,6 +28,7 @@ class Version {
 
     public function setVersion($version)
     {
+        $this->unreleased = ($version == 'unreleased');
         $this->version = $version;
         return $this;
     }
@@ -55,6 +58,25 @@ class Version {
     public function getChanges()
     {
         return $this->changes;
+    }
+
+    public function isReleased()
+    {
+        return !$this->unreleased;
+    }
+
+    public function isUnreleased()
+    {
+        return $this->unreleased;
+    }
+
+    public function setYanked($yanked) {
+        $this->yanked = $yanked;
+    }
+
+    public function isYanked()
+    {
+        return $this->yanked;
     }
 
     public function addChange($type, $change) {
