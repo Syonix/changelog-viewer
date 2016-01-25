@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added support for unreleased versions #2
 - Added support for yanked releases #4
 
-### Changed
+### Improved
 - Made release link and date optional #5
 
 ## [v0.1.1](https://github.com/Syonix/changelog-viewer/releases/tag/v0.1.1) - 2016-01-23
