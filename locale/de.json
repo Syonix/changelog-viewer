@@ -2,6 +2,9 @@
   "new": "neu",
   "improved": "verbessert",
   "fixed": "behoben",
+  "security": "sicherheit",
+  "deprecated": "veraltet",
+  "removed": "entfernt",
   "See full Changelog": "Vollständigen Changelog anzeigen",
   "This release has been yanked.": "Dieser Release wurde zurückgezogen."
 }
