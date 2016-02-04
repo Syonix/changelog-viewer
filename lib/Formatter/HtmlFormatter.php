@@ -12,7 +12,7 @@ class HtmlFormatter {
     private $isModal = false;
     private $printFrame = true;
     private $printStyles = true;
-    private $printScripts = true;
+    private $printScripts = false;
     private $printDownloadLinks = false;
 
     public function __construct(ProcessorInterface $processor) {
