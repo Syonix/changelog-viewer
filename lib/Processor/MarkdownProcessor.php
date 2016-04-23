@@ -24,7 +24,7 @@ class MarkdownProcessor implements ProcessorInterface {
         $this->removeIssues = $removeIssues;
         $this->versions = new ArrayCollection();
         $this->regex = array(
-            'version' => '/^## \[([^\]]+)\](?:\((.+)\))?(?: - ([\d-]+))? ?(\[YANKED\])?/',
+            'version' => '^## \[?(v?[\d\.]+|(?:U|u)nreleased)\]?(?:\((.+)\))?(?: - ([\d-]+))? ?(\[YANKED\])?',
             'changes_url' => '/^\['.$translator->translateTo('See full Changelog').'\]\((.+)\)/',
             'label' => '/^### (.+)/',
             'change' => '/^- (.+)/',
