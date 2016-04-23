@@ -74,7 +74,7 @@ class HtmlFormatter {
                 $html .= '<h2 id="'.$version->getVersion().'"';
                 if($version->isYanked()) $html .= ' class="yanked" title="'.$translator->translateTo('This release has been yanked.').'"';
                 $html .= '>'.$version->getVersion().'</h2>';
-                if($version->isReleased()) {
+                if($version->isReleased() && $version->getReleaseDate() !== null) {
                     $date = new Date($version->getReleaseDate()->getTimestamp());
                     $html .= '<h3 title="'.'">'.$date->ago();
                     if($this->printDownloadLinks && !$version->isYanked()) $html .= ' <a href="'.$version->getUrl().'" target="_blank"><i class="fa fa-download"></i></a>';

@@ -61,8 +61,12 @@ class MarkdownProcessor implements ProcessorInterface {
                 $currentVersion = new Version();
                 $currentVersion->setVersion($matches[1]);
                 if($currentVersion->isReleased()) {
-                    $currentVersion->setUrl($matches[2]);
-                    $currentVersion->setReleaseDate(new \DateTime($matches[3]));
+                    if(array_key_exists(2, $matches)) {
+                        $currentVersion->setUrl($matches[2]);
+                    }
+                    if(array_key_exists(3, $matches)) {
+                        $currentVersion->setReleaseDate(new \DateTime($matches[3]));
+                    }
                 }
                 $currentVersion->setYanked(in_array('[YANKED]', $matches));
             } else if (preg_match($this->regex['changes_url'], $line, $matches)) {
