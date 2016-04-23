@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [unreleased]
+## [v0.1.5](https://github.com/Syonix/changelog-viewer/releases/tag/v0.1.5) - 2016-04-23
+[See full Changelog](https://github.com/Syonix/changelog-viewer/compare/v0.1.4...v0.1.5)
+
 ### Improved
 - Changed default value for `printScripts` in `HtmlFormatter`
 - Improved version regex, so it includes version numbers without link and unreleased tags.
