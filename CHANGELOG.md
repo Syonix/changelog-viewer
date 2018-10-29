@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.1.8](https://github.com/Syonix/changelog-viewer/releases/tag/v0.1.8) - 2018-10-29
+[See full Changelog](https://github.com/Syonix/changelog-viewer/compare/v0.1.7...v0.1.8)
+
+### Fixed
+- `HtmlFormatter`: Fixed huge font sizes
+
+### Updated
+- Added demo section to README
+
 ## [v0.1.7](https://github.com/Syonix/changelog-viewer/releases/tag/v0.1.7) - 2016-04-23
 [See full Changelog](https://github.com/Syonix/changelog-viewer/compare/v0.1.6...v0.1.7)
 
