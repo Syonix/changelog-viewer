@@ -103,3 +103,8 @@ If your changelog file is written in another language, you can use the `LabelTra
   "See full Changelog": "Vollständigen Changelog anzeigen"
 }
 ```
+
+## Demo
+
+After cloning or downloading the project, you can quickly launch a demo by running `php -S localhost:8081` within the demo directory.
+Then just open your browser and visit `localhost:8081`.
