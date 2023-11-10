@@ -18,7 +18,6 @@ class HtmlFormatter {
     public function __construct(ProcessorInterface $processor) {
         $this->processor = $processor;
         $this->locale = $processor->getTranslator()->getLocale();
-        return $this;
     }
 
     public function title($val) {
