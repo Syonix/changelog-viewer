@@ -1,28 +1,26 @@
-
 <?php
-class LogViewerTest extends PHPUnit_Framework_TestCase
+
+namespace Syonix\ChangelogViewer\Translator;
+
+use PHPUnit\Framework\TestCase;
+
+/** @covers \Syonix\ChangelogViewer\Translator\LabelTranslator */
+class LabelTranslatorTest extends TestCase
 {
-    public function testInit()
+    public function setUp(): void
     {
-        $translator = new \Syonix\ChangelogViewer\Translator\LabelTranslator('de');
-        return $translator;
+        $this->translator = new LabelTranslator('de');
     }
 
-    /**
-     * @depends testInit
-     */
-    public function testTranslateFrom($translator)
+    public function testTranslateFrom(): void
     {
-        $label = $translator->translateFrom('neu');
+        $label = $this->translator->translateFrom('neu');
         $this->assertEquals('new', $label);
     }
 
-    /**
-     * @depends testInit
-     */
-    public function testTranslateTo($translator)
+    public function testTranslateTo(): void
     {
-        $label = $translator->translateTo('new');
+        $label = $this->translator->translateTo('new');
         $this->assertEquals('neu', $label);
     }
 }
