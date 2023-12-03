@@ -3,7 +3,7 @@
     "description": "This package offers a nice display for change log files",
     "type": "library",
     "require": {
-        "jenssegers/date": "^v4.0.0",
+        "jenssegers/date": "dev-master",
         "cebe/markdown": "^1.2.1",
         "doctrine/collections": "^2.1.4"
     },
@@ -22,5 +22,11 @@
     },
     "autoload-dev": {
         "psr-4": { "Syonix\\ChangelogViewer\\": "tests/" }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/syonix/date"
+        }
+    ]
 }
