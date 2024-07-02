@@ -120,8 +120,7 @@ class HtmlFormatter {
 
     private function getScriptsHtml()
     {
-        $html = '<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>';
-        $html .= '<script>'.file_get_contents(__DIR__ . '/../../res/bliss.min.js').'</script>';
+        $html = '<script>' . file_get_contents(__DIR__ . '/../../res/bliss.min.js') . '</script>';
         $html .= '<script>'.file_get_contents(__DIR__.'/../../res/scripts.js').'</script>';
         return $html;
     }
