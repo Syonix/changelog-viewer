@@ -7,7 +7,7 @@ use Syonix\ChangelogViewer\Processor\MarkdownProcessor;
 use Syonix\ChangelogViewer\Translator\LabelTranslator;
 
 class ViewerFactory {
-    public static function createMarkdownHtmlViewer($path, $locale = null)
+    public static function createMarkdownHtmlViewer($path, $locale = null): HtmlFormatter
     {
         if(null !== $locale) {
             $locale = new LabelTranslator($locale);
