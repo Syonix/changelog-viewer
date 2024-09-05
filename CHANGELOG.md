@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v1.0.0](https://github.com/Syonix/changelog-viewer/releases/tag/v1.0.0) - 2024-09-05
+[See full Changelog](https://github.com/Syonix/changelog-viewer/compare/v0.1.8...v1.0.0)
+
+### Updated
+- PHP 8.1 compatibility (Thanks @fizdalf)
+- Remove polyfill.io dependency (Thanks @fizdalf)
+
 ## [v0.1.8](https://github.com/Syonix/changelog-viewer/releases/tag/v0.1.8) - 2018-10-29
 [See full Changelog](https://github.com/Syonix/changelog-viewer/compare/v0.1.7...v0.1.8)
 
